@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<div>{{ confirm }}</div>
+<main class = "table">
+ <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td><b>{{ assets }}</b></td>
+            </tr>
+        </tfoot>
+            <tbody>
+            {% for symbol in total_portfolio %}
+            <tr>
+                    <td>{{ symbol }} </td>
+                    <td>{{ total_portfolio[symbol]['name'] }}</td>
+                    <td>{{ total_portfolio[symbol]['shares'] }} </td>
+                    <td>{{ total_portfolio[symbol]['price'] }}</td>
+                    <td>{{ total_portfolio[symbol]['total_str'] }}</td>
+
+            </tr>
+            {% endfor %}
+
+            </tbody>
+
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{ cash }}</td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+{% endblock %}
